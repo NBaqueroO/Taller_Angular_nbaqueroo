@@ -1,0 +1,31 @@
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Canal</th>
+        <th>Temporadas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let serie of series" (click)="onSelect(serie)" class="table-active">
+        <th scope="row">{{ serie.id }}</th>
+        <td><a href="#" (click)="onSelect(serie)">{{ serie.name }}</a></td>
+        <td>{{ serie.channel }}</td>
+        <td>{{ serie.seasons }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedSerie" class="details-section">
+    <h3>{{ selectedSerie.name }}</h3>
+    <img [src]="selectedSerie.poster" alt="{{ selectedSerie.name }}" class="img-fluid poster" />
+    <p class="series-description">{{ selectedSerie.description }}</p>
+    <a [href]="selectedSerie.webpage" target="_blank">More info</a>
+  </div>
+</div>
+
+<div class="average-container">
+  <p>Seasons average: {{ averageSeasons.toFixed(0) }}</p>
+</div>
